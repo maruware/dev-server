@@ -23,6 +23,12 @@ Listening http://0.0.0.0:8080...
 2022/02/05 15:44:51 GET /sample HTTP/2.0 # curl --http2-prior-knowledge http://localhost:8080/sample
 ```
 
+```sh
+$ http-dump -o json
+Listening http://0.0.0.0:8080...
+2022/02/05 15:57:26 {"method":"POST","path":"/sample","is_tls":false,"body":"hello","header":{"Accept":["*/*"],"Content-Length":["5"],"Content-Type":["application/x-www-form-urlencoded"],"User-Agent":["curl/7.77.0"]},"protocol":"HTTP/2.0"} # curl --http2-prior-knowledge http://localhost:8080/sample -d hello
+```
+
 ### Options
 
 ```sh
