@@ -12,6 +12,8 @@ func main() {
 	var (
 		port int
 		ip   string
+		cert string
+		key  string
 	)
 
 	app := &cli.App{
@@ -32,11 +34,23 @@ func main() {
 				Usage:       "listen ip",
 				Destination: &ip,
 			},
+			&cli.StringFlag{
+				Name:        "cert",
+				Usage:       "TLS cert file path",
+				Destination: &cert,
+			},
+			&cli.StringFlag{
+				Name:        "key",
+				Usage:       "TLS key file path",
+				Destination: &key,
+			},
 		},
 		Action: func(c *cli.Context) error {
 			opts := httpdump.ServeOpts{
 				Port: port,
 				Ip:   ip,
+				Cert: cert,
+				Key:  key,
 			}
 			return httpdump.Serve(opts)
 		},
