@@ -23,7 +23,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	l := RequestLog{
 		Method: r.Method,
 		Path:   r.URL.Path,
-		IsTLS:  r.TLS == nil,
+		IsTLS:  r.TLS != nil,
 	}
 
 	b := bytes.NewBuffer(nil)
