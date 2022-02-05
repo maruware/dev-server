@@ -10,10 +10,11 @@ import (
 
 func main() {
 	var (
-		port int
-		ip   string
-		cert string
-		key  string
+		port    int
+		ip      string
+		cert    string
+		key     string
+		oformat string
 	)
 
 	app := &cli.App{
@@ -44,13 +45,21 @@ func main() {
 				Usage:       "TLS key file path",
 				Destination: &key,
 			},
+			&cli.StringFlag{
+				Name:        "output",
+				Aliases:     []string{"o"},
+				Usage:       "output format (simple or json or simple_color)",
+				Value:       "simple_color",
+				Destination: &oformat,
+			},
 		},
 		Action: func(c *cli.Context) error {
 			opts := httpdump.ServeOpts{
-				Port: port,
-				Ip:   ip,
-				Cert: cert,
-				Key:  key,
+				Port:   port,
+				Ip:     ip,
+				Cert:   cert,
+				Key:    key,
+				Format: oformat,
 			}
 			return httpdump.Serve(opts)
 		},

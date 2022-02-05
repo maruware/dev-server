@@ -9,14 +9,15 @@ import (
 )
 
 type ServeOpts struct {
-	Port int
-	Ip   string
-	Cert string
-	Key  string
+	Port   int
+	Ip     string
+	Cert   string
+	Key    string
+	Format string
 }
 
 func Serve(opts ServeOpts) error {
-	handler := NewHandler()
+	handler := NewHandler(opts.Format)
 	addr := fmt.Sprintf("%s:%d", opts.Ip, opts.Port)
 
 	if len(opts.Cert) > 0 {
