@@ -10,7 +10,7 @@ Support h2, h2c
 go install github.com/maruware/http-dump/cmd/http-dump
 ```
 
-or Download from [Releases](releases)
+or Download from [Releases](https://github.com/maruware/http-dump/releases)
 
 ## Usage
 
